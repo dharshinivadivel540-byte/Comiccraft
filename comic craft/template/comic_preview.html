@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ title }} - ComicCraft
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+<body>
+
+<main class="shell">
+
+    <header class="result-head">
+
+        <div>
+
+            <p class="eyebrow">
+                COMIC PREVIEW
+            </p>
+
+            <h1>
+                {{ title }}
+            </h1>
+
+            <p>
+                Review your generated comic
+                panel by panel.
+            </p>
+
+        </div>
+
+
+        <a
+            class="button secondary"
+            href="/"
+        >
+            Create Another
+        </a>
+
+    </header>
+
+
+    {% if demo_mode %}
+
+    <div class="alert demo">
+
+        This comic was generated in Demo Mode.
+
+        Add your Gemini and Hugging Face
+        credentials to enable live AI generation.
+
+    </div>
+
+    {% endif %}
+
+
+    <section class="comic-grid">
+
+        {% for panel in layout %}
+
+        <article class="panel card">
+
+            <div class="panel-title">
+
+                <span>
+                    PANEL {{ panel.panel_number }}
+                </span>
+
+                <h2>
+                    {{ panel.title }}
+                </h2>
+
+            </div>
+
+
+            <img
+                src="{{ panel.image_url }}"
+                alt="Panel {{ panel.panel_number }} illustration"
+                loading="lazy"
+            >
+
+
+            <p class="scene">
+
+                <em>
+                    {{ panel.scene_description }}
+                </em>
+
+            </p>
+
+
+            <div class="script">
+
+                <p>
+                    <b>Caption:</b>
+                    {{ panel.caption }}
+                </p>
+
+                <p>
+                    <b>Narration:</b>
+                    {{ panel.narration }}
+                </p>
+
+                <p>
+                    <b>Dialogue:</b>
+                    "{{ panel.dialogue }}"
+                </p>
+
+            </div>
+
+
+            <details>
+
+                <summary>
+                    Image Prompt
+                </summary>
+
+                <p>
+                    {{ panel.image_prompt }}
+                </p>
+
+            </details>
+
+        </article>
+
+        {% endfor %}
+
+    </section>
+
+
+    <div class="download card">
+
+        <h2>
+            Your Comic Is Ready
+        </h2>
+
+        <p>
+            Your PDF contains all five comic panels,
+            descriptions, narration and dialogue.
+        </p>
+
+        <a
+            class="button"
+            href="{{ pdf_url }}"
+            download
+        >
+            ⬇ Download Your Comic as PDF
+        </a>
+
+        <a
+            class="success-link"
+            href="/export-success"
+        >
+            Open Export Success Page
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+</html>

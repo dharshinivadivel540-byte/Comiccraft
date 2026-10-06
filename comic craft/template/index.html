@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        ComicCraft - AI Comic Story Creator
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+<main class="shell">
+
+    <section class="hero">
+
+        <div>
+
+            <p class="eyebrow">
+                GEMINI + AI IMAGE GENERATION
+            </p>
+
+            <h1>
+                ComicCraft
+            </h1>
+
+            <p>
+                Turn one simple idea into a
+                complete five-panel comic with
+                AI-generated storytelling,
+                dialogue, illustrations and PDF export.
+            </p>
+
+        </div>
+
+        <span class="badge">
+
+            {% if demo_mode %}
+                Demo Mode
+            {% else %}
+                AI Mode
+            {% endif %}
+
+        </span>
+
+    </section>
+
+
+    {% if error %}
+
+    <div class="alert">
+        {{ error }}
+    </div>
+
+    {% endif %}
+
+
+    <form
+        class="card form-grid"
+        action="/generate"
+        method="post"
+    >
+
+        <label class="wide">
+
+            Story Prompt
+
+            <textarea
+                name="story_prompt"
+                required
+                minlength="3"
+                placeholder="A brave fox exploring an enchanted forest..."
+            ></textarea>
+
+        </label>
+
+
+        <label>
+
+            Main Character Name
+
+            <input
+                type="text"
+                name="character_name"
+                value="Alex"
+                required
+            >
+
+        </label>
+
+
+        <label>
+
+            Setting
+
+            <select name="setting">
+
+                <option>
+                    enchanted forest
+                </option>
+
+                <option>
+                    school
+                </option>
+
+                <option>
+                    city
+                </option>
+
+                <option>
+                    space station
+                </option>
+
+                <option>
+                    underwater world
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Story Tone
+
+            <select name="tone">
+
+                <option>
+                    dramatic
+                </option>
+
+                <option>
+                    funny
+                </option>
+
+                <option>
+                    light-hearted
+                </option>
+
+                <option>
+                    poetic
+                </option>
+
+                <option>
+                    mysterious
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Art Style
+
+            <select name="art_style">
+
+                <option>
+                    comic book
+                </option>
+
+                <option>
+                    anime
+                </option>
+
+                <option>
+                    pixel art
+                </option>
+
+                <option>
+                    realistic
+                </option>
+
+                <option>
+                    watercolor
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <div class="wide actions">
+
+            <button type="submit">
+                ✨ Generate Comic
+            </button>
+
+            <a href="/docs">
+                API Docs
+            </a>
+
+        </div>
+
+    </form>
+
+
+    <section class="info card">
+
+        <h2>
+            How it works
+        </h2>
+
+        <div class="steps">
+
+            <span>
+                01<br>
+                <b>Outline</b>
+            </span>
+
+            <span>
+                02<br>
+                <b>Story</b>
+            </span>
+
+            <span>
+                03<br>
+                <b>Images</b>
+            </span>
+
+            <span>
+                04<br>
+                <b>PDF</b>
+            </span>
+
+        </div>
+
+        <p>
+            Start with Demo Mode to test the entire
+            application without API keys.
+            Add Gemini and Hugging Face credentials
+            later for real AI generation.
+        </p>
+
+    </section>
+
+</main>
+
+<script src="/static/js/app.js"></script>
+
+</body>
+</html>
